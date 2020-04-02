@@ -1,0 +1,9 @@
+## dotnet
+bin/
+obj/
+
+##hidden files
+1_csharp/MediaWorld/–
+
+## nodejs
+node_modules/
