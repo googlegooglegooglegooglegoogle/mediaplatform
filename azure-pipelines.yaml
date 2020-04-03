@@ -21,7 +21,7 @@ stages:
           - task: Docker@2
             inputs:
               command: login
-              containerRegistry: mediaplatform
+              containerRegistry: docker
           - script: |
               docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform mediaplatform.MediaPlatform.API
               docker image push jbchheav/mediaplatform
