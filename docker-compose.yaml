@@ -12,10 +12,28 @@ stages:
       - job: build_mediaplatform_client
         steps:
           - script: dotnet build mediaplatform_client/MediaPlatformClient.MVC/*.csproj
-  - stage: test
-    jobs:
-  - stage: analyze
-    jobs:
+
+
   - stage: pack
     jobs:
+      - job: pack_mediaplatform
+        steps:
+          - task: Docker@2
+            inputs:
+              command: login
+              containerRegistry: docker
+          - script: |
+              docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform mediaplatform_client.MediaPlatformClient.MVC
+              docker image push googlex5/mediaplatform
+          - task: 
+      - job: pack_mediaplatform_client
+        steps:
+          - task: Docker@2
+            inputs:
+              command: login
+              containerRegistry: docker
+          - script: |
+              docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
+              docker image push googlex5/mediaplatform_client
+          - task: 
   # - stage: deploy
