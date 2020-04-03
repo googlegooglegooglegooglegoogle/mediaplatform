@@ -21,14 +21,14 @@ stages:
           - task: Docker@2
             inputs:
               command: login
-              containerRegistry: docker
+              containerRegistry: mediaplatform
           - script: |
               docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform mediaplatform_client.MediaPlatformClient.MVC
               docker image push googlex5/mediaplatform
           - task: Docker@2
             inputs:
               command: logout
-              containerRegistry: docker
+              containerRegistry: mediaplatform
       - job: pack_mediaplatform_client
         steps:
           - task: Docker@2
