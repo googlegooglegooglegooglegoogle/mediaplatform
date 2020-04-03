@@ -23,7 +23,7 @@ stages:
               command: login
               containerRegistry: docker
           - script: |
-              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform mediaplatform.MediaPlatform.API
+              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform mediaplatform
               docker image push jbchheav/mediaplatform
           - task: Docker@2
             inputs:
@@ -36,7 +36,7 @@ stages:
               command: login
               containerRegistry: docker
           - script: |
-              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
+              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform_client mediaplatform_client
               docker image push jbchheav/mediaplatform_client
           - task: Docker@2
             inputs:
