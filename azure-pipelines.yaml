@@ -23,8 +23,8 @@ stages:
               command: login
               containerRegistry: mediaplatform
           - script: |
-              docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform mediaplatform_client.MediaPlatformClient.MVC
-              docker image push googlex5/mediaplatform
+              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform mediaplatform.MediaPlatform.API
+              docker image push jbchheav/mediaplatform
           - task: Docker@2
             inputs:
               command: logout
@@ -34,10 +34,10 @@ stages:
           - task: Docker@2
             inputs:
               command: login
-              containerRegistry: docker
+              containerRegistry: mediaplatform
           - script: |
-              docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
-              docker image push googlex5/mediaplatform_client
+              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
+              docker image push jbchheav/mediaplatform_client
           - task: Docker@2
             inputs:
               command: logout
