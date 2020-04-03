@@ -1,39 +1,24 @@
-pr: 
-  - master 
+networks:
+  skynet:
 
-name: $(date:yyyyMMdd)$(rev:.rr)
+services:
+  mvc:
+    build:
+      context: mediaplatform_client/MediaPlatformClient.MVC
+      dockerfile: ../../.docker/client.dockerfile
+    image: googlex5/mvcproj
+    ports:
+      - 5000:80
+    networks:
+      - skynet
+  api:
+    build:
+      context: mediaplatform/MediaPlatform.API
+      dockerfile: ../../.docker/api.dockerfile
+    image: googlex5/apiproj
+    ports:
+      - 4000:80
+    networks:
+      - skynet
 
-stages:
-  - stage: build
-    jobs:
-      - job: build_mediaplatform
-        steps:
-          - script: dotnet build mediaplatform/MediaPlatform.API/*.csproj
-      - job: build_mediaplatform_client
-        steps:
-          - script: dotnet build mediaplatform_client/MediaPlatformClient.MVC/*.csproj
-
-
-  - stage: pack
-    jobs:
-      - job: pack_mediaplatform
-        steps:
-          - task: Docker@2
-            inputs:
-              command: login
-              containerRegistry: docker
-          - script: |
-              docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform mediaplatform_client.MediaPlatformClient.MVC
-              docker image push googlex5/mediaplatform
-          - task: 
-      - job: pack_mediaplatform_client
-        steps:
-          - task: Docker@2
-            inputs:
-              command: login
-              containerRegistry: docker
-          - script: |
-              docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
-              docker image push googlex5/mediaplatform_client
-          - task: 
-  # - stage: deploy
+version: "3.7"

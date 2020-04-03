@@ -24,7 +24,7 @@ namespace MediaPlatformClient.MVC.Controllers
 
       public IActionResult Index()
       {
-         var res = _http.GetAsync("http://localhost:4000/WeatherForecast").GetAwaiter().GetResult();
+         var res = _http.GetAsync("http://api/WeatherForecast").GetAwaiter().GetResult();
          var temps = JsonConvert.DeserializeObject<List<WeatherForecastViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
          
          return View(temps);

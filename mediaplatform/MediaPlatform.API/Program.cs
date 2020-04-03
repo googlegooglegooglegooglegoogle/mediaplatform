@@ -20,7 +20,7 @@ namespace MediaPlatform.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>().UseUrls("http://+:4000");
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
