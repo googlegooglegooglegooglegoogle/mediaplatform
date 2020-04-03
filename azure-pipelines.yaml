@@ -28,13 +28,13 @@ stages:
           - task: Docker@2
             inputs:
               command: logout
-              containerRegistry: mediaplatform
+              containerRegistry: docker
       - job: pack_mediaplatform_client
         steps:
           - task: Docker@2
             inputs:
               command: login
-              containerRegistry: mediaplatform
+              containerRegistry: docker
           - script: |
               docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
               docker image push jbchheav/mediaplatform_client
