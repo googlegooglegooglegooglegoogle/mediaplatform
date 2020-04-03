@@ -24,7 +24,7 @@ stages:
               containerRegistry: docker
           - script: |
               docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform mediaplatform
-              docker image push jbchheav/mediaplatform:jbchheav/mediaplatform
+              docker push jbchheav/mediaplatform:jbchheav/mediaplatform
           - task: Docker@2
             inputs:
               command: logout
@@ -37,7 +37,7 @@ stages:
               containerRegistry: docker
           - script: |
               docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform_client mediaplatform_client
-              docker image push jbchheav/mediaplatform_client:jbchheav/mediaplatform_client
+              docker push jbchheav/mediaplatform_client:jbchheav/mediaplatform_client
           - task: Docker@2
             inputs:
               command: logout
