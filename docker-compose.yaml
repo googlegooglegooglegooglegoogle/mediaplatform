@@ -1,0 +1,21 @@
+pr: 
+  - master 
+
+name: $(date:yyyyMMdd)$(rev:.rr)
+
+stages:
+  - stage: build
+    jobs:
+      - job: build_mediaplatform
+        steps:
+          - script: dotnet build mediaplatform/MediaPlatform.API/*.csproj
+      - job: build_mediaplatform_client
+        steps:
+          - script: dotnet build mediaplatform_client/MediaPlatformClient.MVC/*.csproj
+  - stage: test
+    jobs:
+  - stage: analyze
+    jobs:
+  - stage: pack
+    jobs:
+  # - stage: deploy
