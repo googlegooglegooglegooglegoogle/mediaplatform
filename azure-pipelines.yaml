@@ -25,7 +25,10 @@ stages:
           - script: |
               docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform mediaplatform_client.MediaPlatformClient.MVC
               docker image push googlex5/mediaplatform
-          - task: 
+          - task: Docker@2
+            inputs:
+              command: logout
+              containerRegistry: docker
       - job: pack_mediaplatform_client
         steps:
           - task: Docker@2
@@ -35,5 +38,8 @@ stages:
           - script: |
               docker image build --file .docker/api.dockerfile --tag googlex5/mediaplatform_client mediaplatform_client.MediaPlatformClient.MVC
               docker image push googlex5/mediaplatform_client
-          - task: 
+          - task: Docker@2
+            inputs:
+              command: logout
+              containerRegistry: docker
   # - stage: deploy
