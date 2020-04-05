@@ -80,9 +80,6 @@ stages:
               command: logout
               containerRegistry: docker
 
-
-      - job: pack_api
-
   # - stage: deploy
   #   jobs:
   #     - job: deploy_app
