@@ -71,7 +71,7 @@ stages:
               command: login
               containerRegistry: docker
           - script: |
-              docker image build --file .docker/api.dockerfile --tag jesusguerecab/clientproj mediaplatform/MediaPlatform.API
+              docker image build --file .docker/api.dockerfile --tag jesusguerecab/apiproj mediaplatform/MediaPlatform.API
               docker image push jesusguerecab/apiproj
           - task: Docker@2
             inputs:
