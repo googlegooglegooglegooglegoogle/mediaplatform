@@ -28,7 +28,7 @@ stages:
             inputs:
               name: "dotnet-sonarscanner"
           - script: |
-              dotnet sonarscanner begin /k:"mediaplatform_client" /o:"googlegooglegooglegooglegoogle" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
+              dotnet sonarscanner begin /k:"mediaplatform_client" /o:"googlex5" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build mediaplatform_client/MediaPlatformClient.MVC/MediaPlatformClient.MVC.csproj
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
             env:
@@ -42,7 +42,7 @@ stages:
             inputs:
               name: "dotnet-sonarscanner"
           - script: |
-              dotnet sonarscanner begin /k:"mediaplatform_api" /o:"googlegooglegooglegooglegoogle" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
+              dotnet sonarscanner begin /k:"mediaplatform_api" /o:"googlex5" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
             env:
