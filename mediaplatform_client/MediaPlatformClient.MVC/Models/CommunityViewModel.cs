@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace MediaPlatform.MVC.Models
+namespace Models
 {
    public class CommunityViewModel
    {
     public long ID {get;set;}
-    public List<Video> Videos {get;set;}
     public string Name {get;set;}
 
     public CommunityViewModel() {}
