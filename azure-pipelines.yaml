@@ -26,7 +26,7 @@ stages:
         steps:
           - task: DotnetGlobalToolInstaller@0
             inputs:
-              name: 'dotnet-sonarscanner'
+              name: "dotnet-sonarscanner"
           - script: |
               dotnet sonarscanner begin /k:"mediaplatform_client" /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build
@@ -41,7 +41,7 @@ stages:
         steps:
           - task: DotnetGlobalToolInstaller@0
             inputs:
-              name: 'dotnet-sonarscanner'
+              name: "dotnet-sonarscanner"
           - script: |
               dotnet sonarscanner begin /k:"mediaplatform_api" /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build
