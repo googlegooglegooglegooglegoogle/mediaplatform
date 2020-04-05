@@ -13,6 +13,5 @@ namespace MediaPlatform.Domain.Models
     {
       ID = DateTime.Now.Ticks;
     }
-
   }
 }
