@@ -28,11 +28,11 @@ stages:
             inputs:
               name: 'dotnet-sonarscanner'
           - script: |
-              dotnet sonarscanner begin /k: /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
+              dotnet sonarscanner begin /k:"mediaplatform_client" /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build
               dotnet test
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
-            environment:
+            env:
               SONAR_LOGIN: $(sonar.login)
 
       - job: aalyze_api
@@ -43,11 +43,11 @@ stages:
             inputs:
               name: 'dotnet-sonarscanner'
           - script: |
-              dotnet sonarscanner begin /k: /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
+              dotnet sonarscanner begin /k:"mediaplatform_api" /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build
               dotnet test
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
-            environment:
+            env:
               SONAR_LOGIN: $(sonar.login)
 
   - stage: pack
