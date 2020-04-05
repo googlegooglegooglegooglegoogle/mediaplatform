@@ -8,10 +8,10 @@ stages:
     jobs:
       - job: build_client
         steps:
-          - script: dotnet build --project mediaplatform_client/MediaPlatformClient.MVC/MediaPlatformClient.MVC.csproj
+          - script: dotnet build mediaplatform_client/MediaPlatformClient.MVC/MediaPlatformClient.MVC.csproj
       - job: build_api
         steps:
-          - script: dotnet build --project mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
+          - script: dotnet build mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
 
   - stage: test
     jobs:
@@ -29,13 +29,12 @@ stages:
               name: "dotnet-sonarscanner"
           - script: |
               dotnet sonarscanner begin /k:"mediaplatform_client" /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
-              dotnet build
-              dotnet test
+              dotnet build mediaplatform_client/MediaPlatformClient.MVC/MediaPlatformClient.MVC.csproj
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
             env:
               SONAR_LOGIN: $(sonar.login)
 
-      - job: aalyze_api
+      - job: analyze_api
         pool:
           vmImage: ubuntu-18.04
         steps:
@@ -44,8 +43,7 @@ stages:
               name: "dotnet-sonarscanner"
           - script: |
               dotnet sonarscanner begin /k:"mediaplatform_api" /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
-              dotnet build
-              dotnet test
+              dotnet build mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
             env:
               SONAR_LOGIN: $(sonar.login)
