@@ -29,7 +29,7 @@ stages:
               name: "dotnet-sonarscanner"
           - script: |
               dotnet sonarscanner begin /k:"mediaplatform_client" /o:"googlex5" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
-              dotnet build mediaplatform_client/MediaPlatformClient.MVC/MediaPlatformClient.MVC.csproj
+              dotnet build mediaplatform_client/MediaPlatformClient.sln
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
             env:
               SONAR_LOGIN: $(sonar.login)
@@ -43,7 +43,7 @@ stages:
               name: "dotnet-sonarscanner"
           - script: |
               dotnet sonarscanner begin /k:"mediaplatform_api" /o:"googlex5" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
-              dotnet build mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
+              dotnet build mediaplatform/MediaPlatform.sln
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
             env:
               SONAR_LOGIN: $(sonar.login)
