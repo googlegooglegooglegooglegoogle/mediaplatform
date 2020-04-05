@@ -1,48 +1,105 @@
 pr: 
   - master 
 
-name: $(date:yyyyMMdd)$(rev:.rr)
+name: $(date:yyyyMMdd)$(rev:.rrr)
 
 stages:
   - stage: build
     jobs:
-      - job: build_mediaplatform
+      - job: build_client
         steps:
-          - script: dotnet build mediaplatform/MediaPlatform.API/*.csproj
-      - job: build_mediaplatform_client
+          - script: dotnet build --project mediaplatform_client/MediaPlatformClient.MVC/MediaPlatformClient.MVC.csproj
+      - job: build_api
         steps:
-          - script: dotnet build mediaplatform_client/MediaPlatformClient.MVC/*.csproj
+          - script: dotnet build --project mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
 
+  - stage: test
+    jobs:
+        - job: test_client
+        - job: test_api
+
+  - stage: analyze
+    jobs:
+      - job: analyze_client
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+          - task: DotnetGlobalToolInstaller@0
+            inputs:
+              name: 'dotnet-sonarscanner'
+          - script: |
+              dotnet sonarscanner begin /k: /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
+              dotnet build
+              dotnet test
+              dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
+            environment:
+              SONAR_LOGIN: $(sonar.login)
+
+      - job: aalyze_api
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+          - task: DotnetGlobalToolInstaller@0
+            inputs:
+              name: 'dotnet-sonarscanner'
+          - script: |
+              dotnet sonarscanner begin /k: /n: /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
+              dotnet build
+              dotnet test
+              dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
+            environment:
+              SONAR_LOGIN: $(sonar.login)
 
   - stage: pack
     jobs:
-      - job: pack_mediaplatform
+      - job: pack_client
         steps:
           - task: Docker@2
             inputs:
               command: login
               containerRegistry: docker
           - script: |
-              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform mediaplatform
-              docker image push jbchheav/mediaplatform
+              docker image build --file .docker/client.dockerfile --tag jesusguerecab/clientproj mediaplatform_client/MediaPlatformClient.MVC
+              docker image push jesusguerecab/clientproj
           - task: Docker@2
             inputs:
               command: logout
               containerRegistry: docker
-      - job: pack_mediaplatform_client
+              
+      - job: pack_api
         steps:
           - task: Docker@2
             inputs:
               command: login
               containerRegistry: docker
           - script: |
-              docker image build --file .docker/api.dockerfile --tag jbchheav/mediaplatform_client mediaplatform_client
-              docker image push jbchheav/mediaplatform_client
+              docker image build --file .docker/api.dockerfile --tag jesusguerecab/clientproj mediaplatform/MediaPlatform.API
+              docker image push jesusguerecab/apiproj
           - task: Docker@2
             inputs:
               command: logout
               containerRegistry: docker
-  # - stage: deploy
+
+
+      - job: pack_api
+
+  - stage: deploy
+    jobs:
+      - job: deploy_app
+        steps:
+          - task: DockerCompose@0
+            displayName: Run services
+            inputs:
+              action: Run services
+              azureSubscriptionEndpoint: $(azure.subscription)
+              containerregistrytype: Container Registry
+              dockerComposeFile: docker-compose.yaml
+              projectName: $(Build.Repository.Name)
+              qualifyImageNames: true
+              buildImages: false
+              detached: false
+
+      
 
 trigger:
   - master

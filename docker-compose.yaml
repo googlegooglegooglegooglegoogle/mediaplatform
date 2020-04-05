@@ -6,7 +6,7 @@ services:
     build:
       context: mediaplatform_client/MediaPlatformClient.MVC
       dockerfile: ../../.docker/client.dockerfile
-    image: googlex5/mvcproj
+    image: jesusguerecab/clientproj 
     ports:
       - 5000:80
     networks:
@@ -15,7 +15,7 @@ services:
     build:
       context: mediaplatform/MediaPlatform.API
       dockerfile: ../../.docker/api.dockerfile
-    image: googlex5/apiproj
+    image: jesusguerecab/apiproj
     ports:
       - 4000:80
     networks:
