@@ -9,6 +9,10 @@ namespace MediaPlatform.Storing.Repositories
    {
       private static MediaPlatformDbContext _db;
 
+      public static MediaPlatformDbContext GetDbContext()
+      {
+        return _db;
+      }
       public MediaPlatformRepository(MediaPlatformDbContext dbContext)
       {
          _db = dbContext;

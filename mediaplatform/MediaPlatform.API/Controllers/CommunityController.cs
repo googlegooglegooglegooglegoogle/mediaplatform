@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using MediaPlatform.Domain.Models;
+using MediaPlatform.Storing.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -15,10 +17,23 @@ namespace MediaPlatform.API.Controllers
         _logger = logger;
     }
 
-    [HttpGet]
-    public void Get()
+    public MediaPlatformRepository _mpr;
+    private MediaPlatformSingleton _mps;
+
+    public CommunityController(MediaPlatformRepository repo)
     {
-      
+        _mpr = repo;
+        _mps = new MediaPlatformSingleton(_mpr);
+    }
+
+    [HttpGet]
+    public List<Community> GetCommunityList()
+    {
+      if (ModelState.IsValid)
+        {
+          return _mps.ListOfCommunities();
+        }
+        return null;
     }
 
     [HttpPost]
