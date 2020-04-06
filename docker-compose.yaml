@@ -24,14 +24,14 @@ services:
       
   api:
     build:
-      context: mediaplatform/MediaPlatform.API
-      dockerfile: ../../.docker/api.dockerfile
+      context: mediaplatform/
+      dockerfile: ../.docker/api.dockerfile
     image: jesusguerecab/apiproj
     ports:
       - 4000:80
     networks:
       - skynet
     environment:
-      ConnectionStrings__main: "server=sql;database=PizzaBoxDb;user id=sa;password=Password12345"
+      ConnectionStrings__main: "server=sql;database=MediaPlatformDB;user id=sa;password=Password12345"
 
 version: "3.7"
