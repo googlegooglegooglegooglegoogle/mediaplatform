@@ -14,7 +14,6 @@ namespace MediaPlatformClient.MVC.Controllers
 {
    public class HomeController : Controller
    {
-      private static readonly HttpClient _http = new HttpClient();
       private readonly ILogger<HomeController> _logger;
 
       public HomeController(ILogger<HomeController> logger)
@@ -24,10 +23,7 @@ namespace MediaPlatformClient.MVC.Controllers
 
       public IActionResult Index()
       {
-         var res = _http.GetAsync("http://api/WeatherForecast").GetAwaiter().GetResult();
-         var temps = JsonConvert.DeserializeObject<List<WeatherForecastViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-         
-         return View(temps);
+         return View();
       }
 
       public IActionResult Privacy()
