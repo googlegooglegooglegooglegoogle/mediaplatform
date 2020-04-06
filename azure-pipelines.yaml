@@ -20,7 +20,7 @@ stages:
             vmImage: ubuntu-18.04
           steps:
             - script: dotnet test --collect:"XPlat Code Coverage"
-              workingDirectory: '$(System.DefaultWorkingDirectory)'
+              workingDirectory: mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
 
 
   - stage: analyze
