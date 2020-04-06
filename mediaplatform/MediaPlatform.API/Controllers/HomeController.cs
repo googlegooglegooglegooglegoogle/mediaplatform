@@ -9,7 +9,6 @@ namespace MediaPlatform.API.Controllers
   [Route("[controller]")]
   public class HomeController : ControllerBase
   {
-
    private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
     private readonly ILogger<HomeController> _logger;
 

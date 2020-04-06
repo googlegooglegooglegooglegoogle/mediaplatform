@@ -17,8 +17,8 @@ services:
       context: mediaplatform/
       dockerfile: ../.docker/api.dockerfile
     image: jesusguerecab/apiproj
-    ports:
-      - 4000:80
+    depends_on:
+      - mssql
     networks:
       - skynet
       
@@ -26,6 +26,7 @@ services:
     build:
       context: ./
       dockerfile: .docker/mssql.dockerfile
+    image: jesusguerecab/mssql
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Password12345

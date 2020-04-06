@@ -1,49 +1,52 @@
 using System.Collections.Generic;
 using MediaPlatform.Domain.Models;
+using MediaPlatform.Storing.Databases;
 using MediaPlatform.Storing.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace MediaPlatform.API.Controllers
 {
-  [ApiController]
-  [Route("[controller]")]
-  public class CommunityController : ControllerBase
-  {
-    private readonly ILogger<CommunityController> _logger;
+   [ApiController]
+   [Route("[controller]")]
+   public class CommunityController : ControllerBase
+   {
 
-    public CommunityController(ILogger<CommunityController> logger)
-    {
-        _logger = logger;
-    }
-    private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
+      private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
+      private readonly ILogger<HomeController> _logger;
 
-    [HttpGet]
-    public List<Community> GetCommunityList()
-    {
-      if (ModelState.IsValid)
-        {
-          return _mps.ListOfCommunities();
-        }
-        return null;
-    }
+      public CommunityController(ILogger<HomeController> logger, MediaPlatformDbContext dbContext)
+      {
+         _mps.SetDbContext(dbContext);
+         _logger = logger;
+      }
 
-    [HttpPost]
-    public void Post()
-    {
+      [HttpGet]
+      public List<Community> GetCommunityList()
+      {
+         if (ModelState.IsValid)
+         {
+            return _mps.ListOfCommunities();
+         }
+         return null;
+      }
 
-    }
+      [HttpPost]
+      public void Post()
+      {
 
-    [HttpPut]
-    public void Put()
-    {
+      }
 
-    }
+      [HttpPut]
+      public void Put()
+      {
 
-    [HttpDelete]
-    public void Delete()
-    {
+      }
 
-    }
-  }
+      [HttpDelete]
+      public void Delete()
+      {
+
+      }
+   }
 }

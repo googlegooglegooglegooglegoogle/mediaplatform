@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediaPlatform.Domain.Models;
+using MediaPlatform.Storing.Databases;
 using MediaPlatform.Storing.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,15 +14,13 @@ namespace MediaPlatform.API.Controllers
    [Route("[controller]")]
    public class AccountController : ControllerBase
    {
-
       private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
-      private static readonly string[] Summaries = new[]
-      {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-      };
+      private readonly ILogger<HomeController> _logger;
 
-      public AccountController()
+      public AccountController(ILogger<HomeController> logger, MediaPlatformDbContext dbContext)
       {
+         _mps.SetDbContext(dbContext);
+         _logger = logger;
       }
 
       [HttpGet("{username}/{password}")]
@@ -32,19 +31,6 @@ namespace MediaPlatform.API.Controllers
           return _mps.CheckLogin(username, password);
         }
         return false;
-      }
-
-      [HttpGet]
-      public IEnumerable<WeatherForecast> Get()
-      {
-         var rng = new Random();
-         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-         {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = rng.Next(-20, 55),
-            Summary = Summaries[rng.Next(Summaries.Length)]
-         })
-         .ToArray();
       }
    }
 }
