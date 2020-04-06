@@ -8,9 +8,5 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
     {
         return View();
     }
-    // public IActionResult Index()
-    // {
-    //   return View();
-    // }
   }
 }
