@@ -30,14 +30,13 @@ namespace MediaPlatform.API
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllers();
-         services.AddDbContext<MediaPlatformDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("main")));
-         services.AddScoped<MediaPlatformRepository>();
+         services.AddDbContext<MediaPlatformDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("sample")));
+         // services.AddScoped<MediaPlatformRepository>();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-      public void Configure(IApplicationBuilder app, IWebHostEnvironment env, MediaPlatformDbContext dbContext)
+      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
       {
-         dbContext.Database.Migrate();
 
          if (env.IsDevelopment())
          {

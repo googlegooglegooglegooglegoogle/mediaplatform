@@ -13,18 +13,15 @@ namespace MediaPlatform.API.Controllers
    [Route("[controller]")]
    public class AccountController : ControllerBase
    {
+
+      private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
       private static readonly string[] Summaries = new[]
       {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
       };
 
-      public MediaPlatformRepository _mpr;
-      private MediaPlatformSingleton _mps;
-
-      public AccountController(MediaPlatformRepository repo)
+      public AccountController()
       {
-         _mpr = repo;
-         _mps = new MediaPlatformSingleton(_mpr);
       }
 
       [HttpGet("{username}/{password}")]

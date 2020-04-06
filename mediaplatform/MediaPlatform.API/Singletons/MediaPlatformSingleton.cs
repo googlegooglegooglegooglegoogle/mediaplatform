@@ -7,36 +7,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MediaPlatform.API.Controllers
 {
-  public class MediaPlatformSingleton
-  {
-    //private static MediaPlatformRepository _mpr;
-    private MediaPlatformRepository _mpr;
+   public class MediaPlatformSingleton
+   {
+      private static readonly MediaPlatformSingleton _mps = new MediaPlatformSingleton();
+      private static MediaPlatformRepository _mpr;
 
-    public MediaPlatformSingleton(MediaPlatformRepository mpr)
-    {
-      this._mpr = mpr;
-    }
+      public static MediaPlatformSingleton Instance
+      {
+         get
+         {
+            return _mps;
+         }
+      }
 
-    public bool CheckLogin(string username, string password)
-    {
-        return _mpr.Get<User>().SingleOrDefault(u => u.Username == username && u.Password == password) != null;
-    }
+      public void SetDbContext(MediaPlatformDbContext dbContext)
+      {
+         _mpr = new MediaPlatformRepository(dbContext);
+      }
 
-    public Video VideoByName(string name)
-    {
-      return _mpr.Get<Video>().SingleOrDefault(v => v.Title == name);
-    }
+      public bool CheckLogin(string username, string password)
+      {
+         return _mpr.Get<User>().SingleOrDefault(u => u.Username == username && u.Password == password) != null;
+      }
 
-    public List<Community> ListOfCommunities()
-    {
-      return _mpr.Get<Community>().ToList();
-    }
+      public Video VideoByName(string name)
+      {
+         return _mpr.Get<Video>().SingleOrDefault(v => v.Title == name);
+      }
 
-    public List<Video> VideoFromCommunity(string community_name)
-    {
-      MediaPlatformDbContext db = MediaPlatformRepository.GetDbContext();
-      Community com = db.Set<Community>().Include(c => c.Videos).SingleOrDefault(c => c.Name == community_name);
-      return com.Videos;
-    }
-  }
+      public List<Community> ListOfCommunities()
+      {
+         return _mpr.Get<Community>().ToList();
+      }
+
+      public List<Video> VideoFromCommunity(string community_name)
+      {
+         MediaPlatformDbContext db = MediaPlatformRepository.GetDbContext();
+         Community com = db.Set<Community>().Include(c => c.Videos).SingleOrDefault(c => c.Name == community_name);
+         return com.Videos;
+      }
+   }
 }

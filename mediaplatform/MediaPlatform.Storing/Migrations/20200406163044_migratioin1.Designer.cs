@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MediaPlatform.Storing.Migrations
 {
     [DbContext(typeof(MediaPlatformDbContext))]
-    [Migration("20200406044838_testmigration")]
-    partial class testmigration
+    [Migration("20200406163044_migratioin1")]
+    partial class migratioin1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217273183770825L,
+                            ID = 637217694438362014L,
                             Name = "Random Community"
                         });
                 });
@@ -67,28 +67,28 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217273183740696L,
+                            ID = 637217694438344862L,
                             Name = "Demi Demi",
                             Password = "12345",
                             Username = "demi"
                         },
                         new
                         {
-                            ID = 637217273183741960L,
+                            ID = 637217694438346469L,
                             Name = "Jesus",
                             Password = "Password12345",
                             Username = "jesus"
                         },
                         new
                         {
-                            ID = 637217273183742000L,
+                            ID = 637217694438346501L,
                             Name = "George",
                             Password = "password",
                             Username = "george"
                         },
                         new
                         {
-                            ID = 637217273183742007L,
+                            ID = 637217694438346507L,
                             Name = "Jeremy",
                             Password = "12345",
                             Username = "jeremy"
@@ -129,7 +129,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217273183765449L,
+                            ID = 637217694438359757L,
                             Duration = 31L,
                             Title = "Tough Time Never Last, Only Tough People Last",
                             URL = "https://www.youtube.com/watch?v=1puR8jGK03A",
@@ -137,7 +137,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217273183766877L,
+                            ID = 637217694438360866L,
                             Duration = 500L,
                             Title = "Birds are not real",
                             UploadedBy = "George"

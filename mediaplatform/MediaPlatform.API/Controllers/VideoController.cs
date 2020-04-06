@@ -16,15 +16,7 @@ namespace MediaPlatform.API.Controllers
     {
         _logger = logger;
     }
-
-    public MediaPlatformRepository _mpr;
-    private MediaPlatformSingleton _mps;
-
-    public VideoController(MediaPlatformRepository repo)
-    {
-        _mpr = repo;
-        _mps = new MediaPlatformSingleton(_mpr);
-    }
+    private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
 
     [HttpGet]
     public Video GetVideoByName(string name)
