@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
 using Newtonsoft.Json;
+using MediaPlatformClient.MVC.Singletons;
 
 namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
    public class VideoController : Controller
    {
       private static readonly MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
-      public const string SessionUsername = "";
 
       public IActionResult Index()
       {
