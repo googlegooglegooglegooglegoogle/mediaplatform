@@ -1,1 +1,6 @@
-<h1>Hi this is Video/index.cshtml!<h1>
+@model List<string>
+
+@foreach(var v in @Model)
+{
+   <p>@v</p>
+}

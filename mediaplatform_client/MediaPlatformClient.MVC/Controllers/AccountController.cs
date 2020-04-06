@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using Models;
 using System.Net.Http;
 using System;
+using MediaPlatformClient.MVC.Singletons;
 
 namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class AccountController : Controller
   {
-    private readonly HttpClient _httpClient = new HttpClient();
+    private static readonly MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
     public const string SessionUsername = "";
     public IActionResult Login()
     {
@@ -22,7 +23,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
     {      
       if (ModelState.IsValid)
       {
-        var res = _httpClient.GetAsync($"http://api/account/{accountViewModel.Username}/{accountViewModel.Password}").GetAwaiter().GetResult();
+        var res = _mps.Client.GetAsync($"http://api/account/{accountViewModel.Username}/{accountViewModel.Password}").GetAwaiter().GetResult();
         var something = res.Content.ReadAsStringAsync().GetAwaiter().GetResult().ToString();
         //something should be a string called 'True' or 'False'
 
