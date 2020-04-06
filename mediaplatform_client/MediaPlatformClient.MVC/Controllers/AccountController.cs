@@ -27,7 +27,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 
         var name = "";
         if (Boolean.TryParse(something)==true)
-          name = something;
+          name = accountViewModel.Username;
         else if (Boolean.TryParse(something)==false)
           name = "false";
         else
