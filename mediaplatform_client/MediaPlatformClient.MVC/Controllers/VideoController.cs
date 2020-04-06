@@ -21,8 +21,8 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
       {
 
          var res = _mps.Client.GetAsync($"http://api/video/demi").GetAwaiter().GetResult();
-         var films = JsonConvert.DeserializeObject<List<string>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-         return View(films);
+         var videos = JsonConvert.DeserializeObject<List<VideoViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+         return View("index", videos);
       }
 
       // public IActionResult Index()

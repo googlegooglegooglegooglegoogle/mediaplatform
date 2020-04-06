@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using MediaPlatform.Domain.Models;
 using MediaPlatform.Storing.Databases;
 using MediaPlatform.Storing.Repositories;
@@ -8,44 +9,25 @@ using Microsoft.Extensions.Logging;
 namespace MediaPlatform.API.Controllers
 {
    [ApiController]
-   [Route("api/[controller]")]
+   [Route("[controller]")]
    public class VideoController : ControllerBase
    {
       private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
       private readonly ILogger<HomeController> _logger;
 
-      public VideoController(ILogger<HomeController> logger, MediaPlatformDbContext dbContext)
+      public VideoController(ILogger<HomeController> logger)
       {
-         _mps.SetDbContext(dbContext);
          _logger = logger;
       }
 
-      [HttpGet]
-      public Video GetVideoByName(string name)
+      [HttpGet("{username}")]
+      public List<Video> GetVideosFromUsername(string username)
       {
          if (ModelState.IsValid)
          {
-            return _mps.VideoByName(name);
+            return _mps.Get<Video>().ToList();
          }
          return null;
-      }
-
-      [HttpPost]
-      public void Post()
-      {
-
-      }
-
-      [HttpPut]
-      public void Put()
-      {
-
-      }
-
-      [HttpDelete]
-      public void Delete()
-      {
-
       }
    }
 }

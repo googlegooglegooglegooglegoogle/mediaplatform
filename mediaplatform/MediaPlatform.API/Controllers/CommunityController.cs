@@ -15,9 +15,8 @@ namespace MediaPlatform.API.Controllers
       private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
       private readonly ILogger<HomeController> _logger;
 
-      public CommunityController(ILogger<HomeController> logger, MediaPlatformDbContext dbContext)
+      public CommunityController(ILogger<HomeController> logger)
       {
-         _mps.SetDbContext(dbContext);
          _logger = logger;
       }
 

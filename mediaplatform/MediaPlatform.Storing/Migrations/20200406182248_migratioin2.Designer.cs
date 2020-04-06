@@ -4,14 +4,16 @@ using MediaPlatform.Storing.Databases;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MediaPlatform.Storing.Migrations
 {
     [DbContext(typeof(MediaPlatformDbContext))]
-    partial class MediaPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200406182248_migratioin2")]
+    partial class migratioin2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

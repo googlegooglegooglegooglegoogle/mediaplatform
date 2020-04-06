@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MediaPlatform.API.Controllers;
 
 namespace MediaPlatform.API
 {
@@ -32,6 +33,8 @@ namespace MediaPlatform.API
 
          dbContext.Database.EnsureCreated();
          
+         MediaPlatformSingleton.Instance.SetDbContext(dbContext);
+
          return host;
       }
 

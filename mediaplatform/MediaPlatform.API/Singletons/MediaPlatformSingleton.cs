@@ -20,6 +20,11 @@ namespace MediaPlatform.API.Controllers
          }
       }
 
+      public IEnumerable<T> Get<T>() where T : class
+      {
+         return _mpr.Get<T>();
+      }
+
       public void SetDbContext(MediaPlatformDbContext dbContext)
       {
          _mpr = new MediaPlatformRepository(dbContext);
@@ -28,11 +33,6 @@ namespace MediaPlatform.API.Controllers
       public bool CheckLogin(string username, string password)
       {
          return _mpr.Get<User>().SingleOrDefault(u => u.Username == username && u.Password == password) != null;
-      }
-
-      public Video VideoByName(string name)
-      {
-         return _mpr.Get<Video>().SingleOrDefault(v => v.Title == name);
       }
 
       public List<Community> ListOfCommunities()
@@ -45,6 +45,13 @@ namespace MediaPlatform.API.Controllers
          MediaPlatformDbContext db = MediaPlatformRepository.GetDbContext();
          Community com = db.Set<Community>().Include(c => c.Videos).SingleOrDefault(c => c.Name == community_name);
          return com.Videos;
+      }
+
+      public List<Video> VideoFromUser(string username)
+      {
+         MediaPlatformDbContext db = MediaPlatformRepository.GetDbContext();
+         User user = db.Set<User>().Include(u => u.Videos).SingleOrDefault(u => u.Username == username);
+         return user.Videos;
       }
    }
 }

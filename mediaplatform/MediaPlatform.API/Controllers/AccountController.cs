@@ -17,16 +17,15 @@ namespace MediaPlatform.API.Controllers
       private MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
       private readonly ILogger<HomeController> _logger;
 
-      public AccountController(ILogger<HomeController> logger, MediaPlatformDbContext dbContext)
+      public AccountController(ILogger<HomeController> logger)
       {
-         _mps.SetDbContext(dbContext);
          _logger = logger;
       }
 
       [HttpGet("{username}/{password}")]
       public bool AccountLogin(string username, string password)
       {
-        if (ModelState.IsValid)
+        if(ModelState.IsValid)
         {
           return _mps.CheckLogin(username, password);
         }
