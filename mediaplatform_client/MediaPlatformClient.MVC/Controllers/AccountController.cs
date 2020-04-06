@@ -21,29 +21,18 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
     {      
       if (ModelState.IsValid)
       {
-        /*
-        make api call and send in avm.Username, avm.Password
-        response = something
-
-        if (response == username and password are correct)
-        {
-          await _signInManager.SignInAsync(user, false);
-          return RedirectToAction("Index", "Home");
-        }
-        */
-        // var res = _httpClient.GetAsync($"http://api/account/{accountViewModel.Username}/{accountViewModel.Password}");
         var res = _httpClient.GetAsync($"http://api/account/{accountViewModel.Username}/{accountViewModel.Password}").GetAwaiter().GetResult();
         var something = res.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-        var name = "";
-        if (something == null)
-        {
-          name = "the name is null";
-        }
-        else
-        {
-          name = "the name is not null";
-        }
+        // var name = "";
+        // if (something == null)
+        // {
+        //   name = "the name is null";
+        // }
+        // else
+        // {
+        //   name = "the name is not null";
+        // }
 
         HttpContext.Session.SetString(SessionUsername, something.ToString());
         return RedirectToAction("Index", "User");
