@@ -27,7 +27,7 @@ namespace MediaPlatform.API.Controllers
          _mps = new MediaPlatformSingleton(_mpr);
       }
 
-      [HttpGet]
+      [HttpGet("{username}/{password}")]
       public bool AccountLogin(string username, string password)
       {
         if (ModelState.IsValid)
