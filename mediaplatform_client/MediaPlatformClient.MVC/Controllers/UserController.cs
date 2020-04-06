@@ -9,15 +9,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
 using Newtonsoft.Json;
+using MediaPlatformClient.MVC.Singletons;
 
 namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class UserController : Controller
   {
-    public const string SessionUsername = "";
+    private static readonly MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
     public IActionResult Index()
     {
-      ViewBag.Username = HttpContext.Session.GetString(SessionUsername);
+      ViewBag.Username = HttpContext.Session.GetString(_mps.SessionUsername);
       return View();
     }
 

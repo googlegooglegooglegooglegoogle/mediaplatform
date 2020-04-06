@@ -5,6 +5,7 @@ namespace MediaPlatformClient.MVC.Singletons
     class MediaPlatformSingleton
     {
         private static readonly MediaPlatformSingleton _mps = new MediaPlatformSingleton();
+        public string SessionUsername {get; set;} = "";
 
          private MediaPlatformSingleton()
          {
@@ -20,5 +21,8 @@ namespace MediaPlatformClient.MVC.Singletons
         }
 
         public HttpClient Client { get; } = new HttpClient();
+
+        
+        
     }
 }
