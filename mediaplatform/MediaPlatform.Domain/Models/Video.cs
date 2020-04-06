@@ -10,7 +10,6 @@ namespace MediaPlatform.Domain.Models
     public long Duration {get;set;}
     public string UploadedBy {get;set;}
     public string URL {get;set;}
-
     public Video()
     {
       ID = DateTime.Now.Ticks;
