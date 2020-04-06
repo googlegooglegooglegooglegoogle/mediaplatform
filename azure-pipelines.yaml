@@ -20,7 +20,7 @@ stages:
             vmImage: ubuntu-18.04
           steps:
             - script: dotnet test --collect:"XPlat Code Coverage"
-              workingDirectory: $(working_dir)
+              workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 
   - stage: analyze
@@ -112,7 +112,3 @@ stages:
 
 trigger:
   - master
-  
-variables:
-  - name: working_dir
-    value: $(System.DefaultWorkingDirectory)/MediaPlatform
