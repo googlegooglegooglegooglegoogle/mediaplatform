@@ -80,18 +80,30 @@ stages:
               
   - stage: deploy
     jobs:
-      - job:
+      - job: deploy_api
         pool:
           vmImage: ubuntu-18.04
         steps:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: "AzureRM"
-              azureSubscription: "mediaplatform"
+              azureSubscription: "Azure subscription 1(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
               appType: "webAppContainer"
               WebAppName: "MediaPlatform"
               DockerNamespace: "jesusguerecab"
               DockerRepository: "apiproj"
+      - job: deploy_client
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: "AzureRM"
+              azureSubscription: "Azure subscription 1(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
+              appType: "webAppContainer"
+              WebAppName: "MediaPlatform"
+              DockerNamespace: "jesusguerecab"
+              DockerRepository: "clientproj"
 
 trigger:
   - master
