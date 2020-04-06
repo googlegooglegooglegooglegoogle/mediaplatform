@@ -1,0 +1,21 @@
+@model Models.AccountViewModel
+
+<h1>Hi this is Account/index.cshtml!</h1>
+
+<form method="post" asp-controller="Account" asp-action="Login">
+  <div asp-validation-summary="All"></div>
+
+  <div>
+    <label asp-for="Username">Username</label>
+    <input asp-for="Username">
+    <span asp-validation-for="Username"></span>
+  </div>
+
+  <div>
+    <label asp-for="Password">Password</label>
+    <input asp-for="Password">
+    <span asp-validation-for="Password"></span>
+  </div>
+
+  <input type="submit" value="Login">
+</form>
