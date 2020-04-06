@@ -32,7 +32,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
         // else
         //   name = "not a bool";
 
-        HttpContext.Session.SetString(SessionUsername, something);
+        HttpContext.Session.SetString(SessionUsername, accountViewModel.Username);
         return RedirectToAction("Index", "User");
       }
       return View(accountViewModel);
