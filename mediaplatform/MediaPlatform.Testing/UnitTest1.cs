@@ -16,7 +16,7 @@ namespace MediaPlatform.Testing
           var sut = new MediaPlatformRepository(db);
           var actual = sut.Get<User>().ToList();
 
-          Assert.True(actual.Count != null);
+          Assert.True(actual.Count >= 0);
         }
     }
 }
