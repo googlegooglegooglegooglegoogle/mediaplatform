@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
@@ -13,11 +14,13 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class UserController : Controller
   {
+    public const string SessionName = "_Name";
     private readonly HttpClient _http = new HttpClient();
 
     public IActionResult Index()
     {
-        return View();
+      ViewBag.Username = HttpContext.Session.GetString(SessionName);
+      return View();
     }
     
     // public IActionResult Index()
