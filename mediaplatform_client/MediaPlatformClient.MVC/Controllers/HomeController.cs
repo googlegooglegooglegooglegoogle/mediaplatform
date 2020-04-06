@@ -9,6 +9,7 @@ using MediaPlatformClient.MVC.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using MediaPlatform.MVC.Models;
+using Models;
 
 namespace MediaPlatformClient.MVC.Controllers
 {
@@ -21,9 +22,14 @@ namespace MediaPlatformClient.MVC.Controllers
          _logger = logger;
       }
 
-      public IActionResult Index()
+      public IActionResult Index() //Index should display videos, users who uploaded them, and community name?
       {
-         return View();
+         List<HomeViewModel> hvms = new List<HomeViewModel>() 
+         {
+          new HomeViewModel() { Title = "SWEET EATS", UploadedBy = "Guy Fieri", CommunityName = "Flavor Town" },
+          new HomeViewModel() { Title = "YESFRED", UploadedBy = "FredFredBurger", CommunityName = "Gumboooo" },
+         };
+         return View(hvms);
       }
 
       public IActionResult Privacy()

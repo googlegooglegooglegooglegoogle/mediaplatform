@@ -1,4 +1,10 @@
-@model Models.CommunityViewModel
+@model List<Models.CommunityViewModel>
 
 <h1>you're in user communities</h1>
 
+<ul>
+@foreach (var item in @Model)
+{
+  <li>@item.ID | @item.Name</li>
+}
+</ul>
