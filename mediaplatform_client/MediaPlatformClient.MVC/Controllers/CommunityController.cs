@@ -8,15 +8,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
 using Newtonsoft.Json;
+using MediaPlatformClient.MVC.Singletons;
 
 namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class CommunityController : Controller
   {
+    private static readonly MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
     public const string SessionUsername = "";
     public IActionResult Index()
     {
-        return View();
+      List<CommunityViewModel> cvms = new List<CommunityViewModel>() 
+      {
+        new CommunityViewModel() {ID = 1, Name = "Hello"},
+        new CommunityViewModel() {ID = 2, Name = "Goodbye"},
+      };
+        return View(cvms);
     }
 
     // public IActionResult Index()

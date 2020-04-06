@@ -12,7 +12,6 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
    public class AccountController : Controller
    {
       private static readonly MediaPlatformSingleton _mps = MediaPlatformSingleton.Instance;
-      public const string SessionUsername = "";
       public IActionResult Login()
       {
          return View();
@@ -27,7 +26,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
             var something = res.Content.ReadAsStringAsync().GetAwaiter().GetResult().ToString();
             if (something == "true")
             {
-               HttpContext.Session.SetString(SessionUsername, accountViewModel.Username);
+               HttpContext.Session.SetString(_mps.SessionUsername, accountViewModel.Username);
                return RedirectToAction("Index", "User");
             }
          }

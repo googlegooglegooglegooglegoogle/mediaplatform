@@ -1,2 +1,10 @@
-<h1>Hi this is Community/index.cshtml!<h1>
+@model List<Models.CommunityViewModel>
 
+<h1>Hi this is Community/index.cshtml!</h1>
+
+<ul>
+@foreach (var item in @Model)
+{
+  <li>@item.ID | @item.Name</li>
+}
+</ul>
