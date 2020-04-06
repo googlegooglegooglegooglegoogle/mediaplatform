@@ -3,15 +3,11 @@ using System.Linq;
 using MediaPlatform.Domain.Interfaces;
 using MediaPlatform.Storing.Databases;
 
-namespace PizzaBox.Storing.Repositories
+namespace MediaPlatform.Storing.Repositories
 {
    public class MediaPlatformRepository
    {
-      private static MediaPlatformDbContext _db = new MediaPlatformDbContext();
-
-      public MediaPlatformRepository()
-      {
-      }
+      private static MediaPlatformDbContext _db;
 
       public MediaPlatformRepository(MediaPlatformDbContext dbContext)
       {

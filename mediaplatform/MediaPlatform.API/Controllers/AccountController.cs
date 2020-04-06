@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediaPlatform.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PizzaBox.Storing.Repositories;
 
 namespace MediaPlatform.API.Controllers
 {
@@ -13,17 +14,17 @@ namespace MediaPlatform.API.Controllers
    public class AccountController : ControllerBase
    {
 
-      [HttpGet]
-      public User Get()
+      public MediaPlatformRepository _mpr;
+
+      public AccountController(MediaPlatformRepository repo)
       {
-         var rng = new Random();
-         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-         {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = rng.Next(-20, 55),
-            Summary = Summaries[rng.Next(Summaries.Length)]
-         })
-         .ToArray();
+         _mpr = repo;
+      }
+
+      [HttpGet]
+      public IEnumerable<User> Get()
+      {
+         return null;
       }
    }
 }

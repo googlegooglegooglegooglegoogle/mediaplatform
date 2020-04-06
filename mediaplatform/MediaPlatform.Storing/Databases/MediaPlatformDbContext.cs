@@ -9,26 +9,10 @@ namespace MediaPlatform.Storing.Databases
     public DbSet<Community> Community {get;set;}
     public DbSet<User> User {get;set;}
     public DbSet<Video> Video {get;set;}
-    public static MediaPlatformDbContext _mediaplatformdb;
 
-    public static MediaPlatformDbContext Instance
-    {
-      get
-      {
-        if (_mediaplatformdb == null)
-          _mediaplatformdb = new MediaPlatformDbContext();
-        return _mediaplatformdb;
-      }
-    }
-
-    public MediaPlatformDbContext()
+    public MediaPlatformDbContext(DbContextOptions options) : base(options)
     {
 
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder buidler)
-    {
-      buidler.UseSqlServer("server=localhost;database=mediaplatformdb;user id=sa;password=Password12345;");
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
