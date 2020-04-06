@@ -23,15 +23,20 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
     }
 
     [HttpGet]
-    public IActionResult UserCommunities() //should take argument strind id, no argument for dev purposes
+    public IActionResult UserCommunities(string id) //should take argument strind id, no argument for dev purposes
     {
       //get list of communities api httpcall
-      List<CommunityViewModel> cvms = new List<CommunityViewModel>() 
-      {
-        new CommunityViewModel() { ID = 1, Name = "A" },
-        new CommunityViewModel() { ID = 2, Name = "B" }
-      };
-      return View(cvms);
+      // List<CommunityViewModel> cvms = new List<CommunityViewModel>() 
+      // {
+      //   new CommunityViewModel() { ID = 1, Name = "A" },
+      //   new CommunityViewModel() { ID = 2, Name = "B" }
+      // };
+
+      var res = _mps.Client.GetAsync($"http://api/user/{id}").GetAwaiter().GetResult();
+      var something = res.Content.ReadAsStringAsync().GetAwaiter().GetResult().ToString();
+      // var uvm = JsonConvert.DeserializeObject<List<UserViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+      ViewBag.something = something;
+      return View();
     }
 
     [HttpGet]

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using MediaPlatform.Storing.Databases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MediaPlatform.Domain.Models;
 
 namespace MediaPlatform.API.Controllers
 {
@@ -17,10 +18,15 @@ namespace MediaPlatform.API.Controllers
          _logger = logger;
       }
 
-    [HttpGet]
-    public void Get()
+    // [HttpGet]
+    [HttpGet("{username}")]
+    public User Get(string username) //string username
     {
-      
+      if (ModelState.IsValid)
+      {
+        return _mps.GetUser(username);
+      }
+      return null;
     }
 
     [HttpPost]

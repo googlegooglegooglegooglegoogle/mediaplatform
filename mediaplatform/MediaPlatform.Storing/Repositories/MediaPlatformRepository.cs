@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MediaPlatform.Domain.Interfaces;
+using MediaPlatform.Domain.Models;
 using MediaPlatform.Storing.Databases;
 
 namespace MediaPlatform.Storing.Repositories
@@ -26,6 +27,11 @@ namespace MediaPlatform.Storing.Repositories
       public T Get<T>(long id) where T : class, IDbItem
       {
          return _db.Set<T>().SingleOrDefault(t => t.ID == id);
+      }
+
+      public User GetUser(string username)
+      {
+         return _db.Set<User>().SingleOrDefault(u => u.Username == username);
       }
 
       public bool Post<T>(T item) where T : class

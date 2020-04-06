@@ -53,5 +53,10 @@ namespace MediaPlatform.API.Controllers
          User user = db.Set<User>().Include(u => u.Videos).SingleOrDefault(u => u.Username == username);
          return user.Videos;
       }
+
+      public User GetUser(string username)
+      {
+        return _mpr.GetUser(username);
+      }
    }
 }

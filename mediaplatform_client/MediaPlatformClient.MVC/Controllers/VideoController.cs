@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
 using Newtonsoft.Json;
-using MediaPlatformClient.MVC.Singletons;
 
 namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
