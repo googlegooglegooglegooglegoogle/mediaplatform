@@ -39,7 +39,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217761682925054L,
+                            ID = 637217767848196661L,
                             Name = "Random Community"
                         });
                 });
@@ -65,28 +65,28 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217761682906727L,
+                            ID = 637217767848182179L,
                             Name = "Demi Demi",
                             Password = "12345",
                             Username = "demi"
                         },
                         new
                         {
-                            ID = 637217761682907686L,
+                            ID = 637217767848183074L,
                             Name = "Jesus",
                             Password = "Password12345",
                             Username = "jesus"
                         },
                         new
                         {
-                            ID = 637217761682907722L,
+                            ID = 637217767848183101L,
                             Name = "George",
                             Password = "password",
                             Username = "george"
                         },
                         new
                         {
-                            ID = 637217761682907728L,
+                            ID = 637217767848183107L,
                             Name = "Jeremy",
                             Password = "12345",
                             Username = "jeremy"
@@ -127,7 +127,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217761682922348L,
+                            ID = 637217767848194626L,
                             Duration = 31L,
                             Title = "Tough Time Never Last, Only Tough People Last",
                             URL = "https://www.youtube.com/embed/1puR8jGK03A",
@@ -135,7 +135,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217761682923770L,
+                            ID = 637217767848195645L,
                             Duration = 500L,
                             Title = "Birds are not real",
                             UploadedBy = "George"

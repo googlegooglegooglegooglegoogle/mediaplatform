@@ -2,7 +2,7 @@
 
 namespace MediaPlatform.Storing.Migrations
 {
-    public partial class migratioin1 : Migration
+    public partial class migratioin2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,17 +71,17 @@ namespace MediaPlatform.Storing.Migrations
             migrationBuilder.InsertData(
                 table: "Community",
                 columns: new[] { "ID", "Name", "UserID" },
-                values: new object[] { 637217694438362014L, "Random Community", null });
+                values: new object[] { 637217767848196661L, "Random Community", null });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "ID", "Name", "Password", "Username" },
                 values: new object[,]
                 {
-                    { 637217694438344862L, "Demi Demi", "12345", "demi" },
-                    { 637217694438346469L, "Jesus", "Password12345", "jesus" },
-                    { 637217694438346501L, "George", "password", "george" },
-                    { 637217694438346507L, "Jeremy", "12345", "jeremy" }
+                    { 637217767848182179L, "Demi Demi", "12345", "demi" },
+                    { 637217767848183074L, "Jesus", "Password12345", "jesus" },
+                    { 637217767848183101L, "George", "password", "george" },
+                    { 637217767848183107L, "Jeremy", "12345", "jeremy" }
                 });
 
             migrationBuilder.InsertData(
@@ -89,8 +89,8 @@ namespace MediaPlatform.Storing.Migrations
                 columns: new[] { "ID", "CommunityID", "Duration", "Title", "URL", "UploadedBy", "UserID" },
                 values: new object[,]
                 {
-                    { 637217694438359757L, null, 31L, "Tough Time Never Last, Only Tough People Last", "https://www.youtube.com/watch?v=1puR8jGK03A", "Demi Demi", null },
-                    { 637217694438360866L, null, 500L, "Birds are not real", null, "George", null }
+                    { 637217767848194626L, null, 31L, "Tough Time Never Last, Only Tough People Last", "https://www.youtube.com/embed/1puR8jGK03A", "Demi Demi", null },
+                    { 637217767848195645L, null, 500L, "Birds are not real", null, "George", null }
                 });
 
             migrationBuilder.CreateIndex(

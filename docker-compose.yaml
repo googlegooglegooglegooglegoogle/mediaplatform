@@ -7,6 +7,7 @@ services:
       context: mediaplatform_client/MediaPlatformClient.MVC
       dockerfile: ../../.docker/client.dockerfile
     image: jesusguerecab/clientproj 
+    restart: always
     ports:
       - 5000:80
     networks:
@@ -17,6 +18,7 @@ services:
       context: mediaplatform/
       dockerfile: ../.docker/api.dockerfile
     image: jesusguerecab/apiproj
+    restart: always
     depends_on:
       - mssql
     networks:
@@ -27,6 +29,7 @@ services:
       context: ./
       dockerfile: .docker/mssql.dockerfile
     image: jesusguerecab/mssql
+    restart: always
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Password12345
