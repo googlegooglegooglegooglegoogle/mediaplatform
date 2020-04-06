@@ -22,7 +22,7 @@ services:
     networks:
       - skynet
       
-  sql:
+  mssql:
     build:
       context: ./
       dockerfile: .docker/mssql.dockerfile
