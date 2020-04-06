@@ -1,3 +1,10 @@
-@model Models.VideoViewModel
+@model List<Models.VideoViewModel>
 
 <h1>you're in user videos</h1>
+
+<ul>
+@foreach (var item in @Model)
+{
+  <li>@item.ID | @item.Title | @item.Duration | @item.UploadedBy</li>
+}
+</ul>

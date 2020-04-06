@@ -22,7 +22,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
     }
 
     [HttpGet]
-    public IActionResult UserCommunities(string id)
+    public IActionResult UserCommunities() //should take argument strind id, no argument for dev purposes
     {
       //get list of communities api httpcall
       List<CommunityViewModel> cvms = new List<CommunityViewModel>() 
@@ -30,11 +30,11 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
         new CommunityViewModel() { ID = 1, Name = "A" },
         new CommunityViewModel() { ID = 2, Name = "B" }
       };
-      return View();
+      return View(cvms);
     }
 
     [HttpGet]
-    public IActionResult UserVideos(string id)
+    public IActionResult UserVideos() //should take argument strind id, no argument for dev purposes
     {
       //get list of videos api httpcall
       List<VideoViewModel> vvms = new List<VideoViewModel>() 
@@ -42,7 +42,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
         new VideoViewModel() { ID = 1, Title = "A", Duration = 100, UploadedBy = "Fred" },
         new VideoViewModel() { ID = 2, Title = "B", Duration = 200, UploadedBy = "Belotte" },
       };
-      return View();
+      return View(vvms);
     }
 
     // public IActionResult Index()
