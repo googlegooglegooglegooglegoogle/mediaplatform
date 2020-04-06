@@ -39,7 +39,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217796089743941L,
+                            ID = 637217845008472534L,
                             Name = "Random Community"
                         });
                 });
@@ -65,28 +65,28 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217796089725213L,
+                            ID = 637217845008457779L,
                             Name = "Demi Demi",
                             Password = "12345",
                             Username = "demi"
                         },
                         new
                         {
-                            ID = 637217796089726186L,
+                            ID = 637217845008458692L,
                             Name = "Jesus",
                             Password = "Password12345",
                             Username = "jesus"
                         },
                         new
                         {
-                            ID = 637217796089726218L,
+                            ID = 637217845008458724L,
                             Name = "George",
                             Password = "password",
                             Username = "george"
                         },
                         new
                         {
-                            ID = 637217796089726224L,
+                            ID = 637217845008458729L,
                             Name = "Jeremy",
                             Password = "12345",
                             Username = "jeremy"
@@ -127,7 +127,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217796089740797L,
+                            ID = 637217845008470452L,
                             Duration = 31L,
                             Title = "Tough Time Never Last, Only Tough People Last",
                             URL = "https://www.youtube.com/embed/1puR8jGK03A",
@@ -135,7 +135,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742280L,
+                            ID = 637217845008471467L,
                             Duration = 247L,
                             Title = "Birds are not real",
                             URL = "https://www.youtube.com/embed/l30_APBNPXg",
@@ -143,7 +143,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742334L,
+                            ID = 637217845008471514L,
                             Duration = 552L,
                             Title = "Americans brace for possible approach of coronavirus peak",
                             URL = "https://www.youtube.com/embed/MwaK-SmcIx0",
@@ -151,7 +151,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742340L,
+                            ID = 637217845008471519L,
                             Duration = 1343L,
                             Title = "Watch Elon Musk announce the Tesla Cybertruck in 14 minutes",
                             URL = "https://www.youtube.com/embed/464puoD09dM",
@@ -159,7 +159,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742346L,
+                            ID = 637217845008471525L,
                             Duration = 332L,
                             Title = "Rick Astley - Never Gonna Give You up (video)",
                             URL = "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -167,7 +167,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742351L,
+                            ID = 637217845008471531L,
                             Duration = 322L,
                             Title = "The Kooks - Naive",
                             URL = "https://www.youtube.com/embed/jkaMiaRLgvY",
@@ -175,7 +175,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742357L,
+                            ID = 637217845008471536L,
                             Duration = 535L,
                             Title = "Gladiator Opening Scene(Part 1)",
                             URL = "https://www.youtube.com/embed/yXiSp9aJYN4",
@@ -183,7 +183,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742363L,
+                            ID = 637217845008471542L,
                             Duration = 428L,
                             Title = "Harry Potter and the Deathly Hallows part 2 - Snape's memories part 2 (HD)",
                             URL = "https://www.youtube.com/embed/iqyf-kJWwIg",
@@ -191,7 +191,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742369L,
+                            ID = 637217845008471547L,
                             Duration = 3109L,
                             Title = "Shaq Tries to Not Make a Face While Eating Spicy Wings | Hot Ones",
                             URL = "https://www.youtube.com/embed/_sZH-psg9yE",
@@ -199,7 +199,7 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217796089742374L,
+                            ID = 637217845008471552L,
                             Duration = 1336L,
                             Title = "Engine Placement EXPLAINED",
                             URL = "https://www.youtube.com/embed/SiOSbHo2dvk",
@@ -216,7 +216,7 @@ namespace MediaPlatform.Storing.Migrations
 
             modelBuilder.Entity("MediaPlatform.Domain.Models.Video", b =>
                 {
-                    b.HasOne("MediaPlatform.Domain.Models.Community", null)
+                    b.HasOne("MediaPlatform.Domain.Models.Community", "Community")
                         .WithMany("Videos")
                         .HasForeignKey("CommunityID");
 

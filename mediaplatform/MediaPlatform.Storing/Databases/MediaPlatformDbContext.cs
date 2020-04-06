@@ -38,6 +38,7 @@ namespace MediaPlatform.Storing.Databases
 
       builder.Entity<User>().HasMany(u => u.Videos);
       builder.Entity<Community>().HasMany(v => v.Videos);
+      builder.Entity<Video>().HasOne(c => c.Community);
       //builder.Entity<Video>().HasOne(c => c.UploadedBy);
 
       builder.Entity<User>().HasData(new User[]
