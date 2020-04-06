@@ -20,7 +20,7 @@ stages:
             vmImage: ubuntu-18.04
           steps:
             - script: dotnet test --collect:"XPlat Code Coverage"
-              workingDirectory: '$(System.DefaultWorkingDirectory)'
+              workingDirectory: $(System.DefaultWorkingDirectory)/mediaplatform/MediaPlatform.API
 
 
   - stage: analyze
@@ -50,6 +50,7 @@ stages:
               dotnet sonarscanner begin /k:"mediaplatform_api" /o:"googlex5" /d:sonar.host.url="https://sonarcloud.io/" /d:sonar.login=$SONAR_LOGIN
               dotnet build mediaplatform/MediaPlatform.sln
               dotnet sonarscanner end /d:sonar.login=$SONAR_LOGIN
+              workingDirectory: $(System.DefaultWorkingDirectory)/mediaplatform/MediaPlatform.API
             env:
               SONAR_LOGIN: $(sonar.login)
 
