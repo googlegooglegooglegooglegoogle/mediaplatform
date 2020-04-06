@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MediaPlatform.Storing.Migrations
 {
     [DbContext(typeof(MediaPlatformDbContext))]
-    [Migration("20200406183305_migratioin2")]
-    partial class migratioin2
+    [Migration("20200406192009_migratioin1")]
+    partial class migratioin1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217767848196661L,
+                            ID = 637217796089743941L,
                             Name = "Random Community"
                         });
                 });
@@ -67,28 +67,28 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217767848182179L,
+                            ID = 637217796089725213L,
                             Name = "Demi Demi",
                             Password = "12345",
                             Username = "demi"
                         },
                         new
                         {
-                            ID = 637217767848183074L,
+                            ID = 637217796089726186L,
                             Name = "Jesus",
                             Password = "Password12345",
                             Username = "jesus"
                         },
                         new
                         {
-                            ID = 637217767848183101L,
+                            ID = 637217796089726218L,
                             Name = "George",
                             Password = "password",
                             Username = "george"
                         },
                         new
                         {
-                            ID = 637217767848183107L,
+                            ID = 637217796089726224L,
                             Name = "Jeremy",
                             Password = "12345",
                             Username = "jeremy"
@@ -129,7 +129,7 @@ namespace MediaPlatform.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 637217767848194626L,
+                            ID = 637217796089740797L,
                             Duration = 31L,
                             Title = "Tough Time Never Last, Only Tough People Last",
                             URL = "https://www.youtube.com/embed/1puR8jGK03A",
@@ -137,10 +137,75 @@ namespace MediaPlatform.Storing.Migrations
                         },
                         new
                         {
-                            ID = 637217767848195645L,
-                            Duration = 500L,
+                            ID = 637217796089742280L,
+                            Duration = 247L,
                             Title = "Birds are not real",
+                            URL = "https://www.youtube.com/embed/l30_APBNPXg",
                             UploadedBy = "George"
+                        },
+                        new
+                        {
+                            ID = 637217796089742334L,
+                            Duration = 552L,
+                            Title = "Americans brace for possible approach of coronavirus peak",
+                            URL = "https://www.youtube.com/embed/MwaK-SmcIx0",
+                            UploadedBy = "Jeremy"
+                        },
+                        new
+                        {
+                            ID = 637217796089742340L,
+                            Duration = 1343L,
+                            Title = "Watch Elon Musk announce the Tesla Cybertruck in 14 minutes",
+                            URL = "https://www.youtube.com/embed/464puoD09dM",
+                            UploadedBy = "Jesus"
+                        },
+                        new
+                        {
+                            ID = 637217796089742346L,
+                            Duration = 332L,
+                            Title = "Rick Astley - Never Gonna Give You up (video)",
+                            URL = "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                            UploadedBy = "George"
+                        },
+                        new
+                        {
+                            ID = 637217796089742351L,
+                            Duration = 322L,
+                            Title = "The Kooks - Naive",
+                            URL = "https://www.youtube.com/embed/jkaMiaRLgvY",
+                            UploadedBy = " George"
+                        },
+                        new
+                        {
+                            ID = 637217796089742357L,
+                            Duration = 535L,
+                            Title = "Gladiator Opening Scene(Part 1)",
+                            URL = "https://www.youtube.com/embed/yXiSp9aJYN4",
+                            UploadedBy = "Jeremy"
+                        },
+                        new
+                        {
+                            ID = 637217796089742363L,
+                            Duration = 428L,
+                            Title = "Harry Potter and the Deathly Hallows part 2 - Snape's memories part 2 (HD)",
+                            URL = "https://www.youtube.com/embed/iqyf-kJWwIg",
+                            UploadedBy = "Jesus"
+                        },
+                        new
+                        {
+                            ID = 637217796089742369L,
+                            Duration = 3109L,
+                            Title = "Shaq Tries to Not Make a Face While Eating Spicy Wings | Hot Ones",
+                            URL = "https://www.youtube.com/embed/_sZH-psg9yE",
+                            UploadedBy = "George"
+                        },
+                        new
+                        {
+                            ID = 637217796089742374L,
+                            Duration = 1336L,
+                            Title = "Engine Placement EXPLAINED",
+                            URL = "https://www.youtube.com/embed/SiOSbHo2dvk",
+                            UploadedBy = "Jesus"
                         });
                 });
 
