@@ -9,6 +9,7 @@ namespace MediaPlatform.Domain.Models
     public string Title {get;set;}
     public long Duration {get;set;}
     public string UploadedBy {get;set;}
+    public string URL {get;set;}
 
     public Video()
     {

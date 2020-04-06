@@ -50,7 +50,7 @@ namespace MediaPlatform.Storing.Databases
 
       builder.Entity<Video>().HasData(new Video[]
       {
-        new Video() {ID = DateTime.Now.Ticks, Title = "Tough Time Never Last, Only Tough People Last", Duration = 31, UploadedBy = "Demi Demi"},
+        new Video() {ID = DateTime.Now.Ticks, Title = "Tough Time Never Last, Only Tough People Last", Duration = 31, UploadedBy = "Demi Demi", URL = "https://www.youtube.com/watch?v=1puR8jGK03A"},
         new Video() {ID = DateTime.Now.Ticks, Title = "Birds are not real", Duration = 500, UploadedBy = "George"},
       });
 
