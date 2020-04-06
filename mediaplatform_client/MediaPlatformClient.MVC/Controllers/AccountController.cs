@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using System.Net.Http;
+using System;
 
 namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
@@ -25,15 +26,13 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
         var something = res.Content.ReadAsStringAsync().GetAwaiter().GetResult().ToString();
         //something should be a string called 'True' or 'False'
 
-        var name = "";
-        if (Boolean.TryParse(something)==true)
-          name = accountViewModel.Username;
-        else if (Boolean.TryParse(something)==false)
-          name = "false";
-        else
-          name = "not a bool";
+        // var name = "";
+        // if (Boolean.TryParse(something))
+        //   name = accountViewModel.Username;
+        // else
+        //   name = "not a bool";
 
-        HttpContext.Session.SetString(SessionUsername, name);
+        HttpContext.Session.SetString(SessionUsername, something);
         return RedirectToAction("Index", "User");
       }
       return View(accountViewModel);
