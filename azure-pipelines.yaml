@@ -19,8 +19,7 @@ stages:
           pool:
             vmImage: ubuntu-18.04
           steps:
-            - script: dotnet test --collect:"XPlat Code Coverage"
-              workingDirectory: mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
+            - script: dotnet test --collect:"XPlat Code Coverage" -p mediaplatform/MediaPlatform.API/MediaPlatform.API.csproj
 
 
   - stage: analyze
