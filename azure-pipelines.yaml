@@ -87,11 +87,11 @@ stages:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: "AzureRM"
-              azureSubscription: "jesusguerecab(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
+              azureSubscription: "mediaplatform"
               appType: "webAppContainer"
               WebAppName: "MediaPlatform"
               DockerNamespace: "jesusguerecab"
-              DockerRepository: ("apiproj", "clientproj")
+              DockerRepository: "apiproj"
 
 trigger:
   - master
