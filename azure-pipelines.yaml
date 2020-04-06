@@ -77,7 +77,7 @@ stages:
             inputs:
               command: logout
               containerRegistry: docker
-
+              
   # - stage: deploy
   #   jobs:
   #     - job: deploy_app
