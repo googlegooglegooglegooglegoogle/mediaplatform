@@ -4,3 +4,9 @@
 {
   <h1>@ViewBag.Username</h1> 
 }
+
+<ul>
+  <li><a asp-controller="User" asp-action="UserCommunities" asp-routeid=@ViewBag.Username>Communities</a></li>
+  <br/>
+  <li><a asp-controller="User" asp-action="UserVideos" asp-routeid=@ViewBag.Username>Videos</a></li>
+</ul>

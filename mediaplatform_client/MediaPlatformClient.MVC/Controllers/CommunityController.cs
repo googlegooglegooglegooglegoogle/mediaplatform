@@ -13,8 +13,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class CommunityController : Controller
   {
-    private readonly HttpClient _http = new HttpClient();
-
+    public const string SessionUsername = "";
     public IActionResult Index()
     {
         return View();

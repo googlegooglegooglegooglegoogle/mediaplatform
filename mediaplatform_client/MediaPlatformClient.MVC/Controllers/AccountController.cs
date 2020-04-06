@@ -8,7 +8,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class AccountController : Controller
   {
-    public const string SessionName = "_Name";
+    public const string SessionUsername = "";
     public IActionResult Login()
     {
       return View();
@@ -29,7 +29,7 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
           return RedirectToAction("Index", "Home");
         }
         */
-        HttpContext.Session.SetString(SessionName, "Mr. Demi Demi");
+        HttpContext.Session.SetString(SessionUsername, "Mr. Demi Demi");
         return RedirectToAction("Index", "User");
       }
       return View(accountViewModel);

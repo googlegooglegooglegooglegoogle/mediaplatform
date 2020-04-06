@@ -14,15 +14,37 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 {
   public class UserController : Controller
   {
-    public const string SessionName = "_Name";
-    private readonly HttpClient _http = new HttpClient();
-
+    public const string SessionUsername = "";
     public IActionResult Index()
     {
-      ViewBag.Username = HttpContext.Session.GetString(SessionName);
+      ViewBag.Username = HttpContext.Session.GetString(SessionUsername);
       return View();
     }
-    
+
+    [HttpGet]
+    public IActionResult UserCommunities(string id)
+    {
+      //get list of communities api httpcall
+      List<CommunityViewModel> cvms = new List<CommunityViewModel>() 
+      {
+        new CommunityViewModel() { ID = 1, Name = "A" },
+        new CommunityViewModel() { ID = 2, Name = "B" }
+      };
+      return View();
+    }
+
+    [HttpGet]
+    public IActionResult UserVideos(string id)
+    {
+      //get list of videos api httpcall
+      List<VideoViewModel> vvms = new List<VideoViewModel>() 
+      {
+        new VideoViewModel() { ID = 1, Title = "A", Duration = 100, UploadedBy = "Fred" },
+        new VideoViewModel() { ID = 2, Title = "B", Duration = 200, UploadedBy = "Belotte" },
+      };
+      return View();
+    }
+
     // public IActionResult Index()
     // {
     //   var res = _http.GetAsync("").GetAwaiter().GetResult();
