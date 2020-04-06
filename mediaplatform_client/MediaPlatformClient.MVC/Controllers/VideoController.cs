@@ -17,10 +17,14 @@ namespace mediaplatform_client.MediaPlatformClient.MVC.Controllers
 
     public IActionResult Index()
     {
-      var res = _http.GetAsync("").GetAwaiter().GetResult();
-      var videos = JsonConvert.DeserializeObject<List<VideoViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-
-      return View(videos);
+        return View();
     }
+    // public IActionResult Index()
+    // {
+    //   var res = _http.GetAsync("").GetAwaiter().GetResult();
+    //   var videos = JsonConvert.DeserializeObject<List<VideoViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+
+    //   return View(videos);
+    // }
   }
 }
