@@ -19,10 +19,22 @@ namespace MediaPlatform.API.Controllers
         };
 
       public MediaPlatformRepository _mpr;
+      private MediaPlatformSingleton _mps;
 
       public AccountController(MediaPlatformRepository repo)
       {
          _mpr = repo;
+         _mps = new MediaPlatformSingleton(_mpr);
+      }
+
+      [HttpGet]
+      public bool AccountLogin(string username, string password)
+      {
+        if (ModelState.IsValid)
+        {
+          return _mps.CheckLogin(username, password);
+        }
+        return false;
       }
 
       [HttpGet]
