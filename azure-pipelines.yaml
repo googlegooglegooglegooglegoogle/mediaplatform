@@ -82,6 +82,20 @@ stages:
             inputs:
               command: logout
               containerRegistry: docker
+
+      - job: pack_mssql
+        steps:
+          - task: Docker@2
+            inputs:
+              command: login
+              containerRegistry: docker
+          - script: |
+              docker image build --file .docker/mssql.dockerfile --tag jesusguerecab/mssql mediaplatform
+              docker image push jesusguerecab/mssql
+          - task: Docker@2
+            inputs:
+              command: logout
+              containerRegistry: docker
               
   # - stage: deploy
   #   jobs:
