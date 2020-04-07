@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {VideoService} from './video.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  video$;
+  constructor(private videoService: VideoService){}
+  fetchVideo() {
+    this.video$ = this.videoService.fetchVideos();
+  }
 }

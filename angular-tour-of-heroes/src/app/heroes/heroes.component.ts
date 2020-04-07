@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from "../hero";
-import { HEROES } from '../mock-heroes';
+import {HttpClientModule} from "@angular/common/http"
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { from } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-heroes',
@@ -8,15 +11,16 @@ import { HEROES } from '../mock-heroes';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  // private url = "http://api/account/{accountViewModel.Username"
+  private url = "http://api/video/demi"
+  // http://api/
+  constructor(private http: HttpClient){}
 
-  hero: Hero = {
-    id: 1,
-    name: "Windstorm"
-  };
+  // getVideos (): Object{
+  //  return this.http.GetVideosFromUsername(this.url)
+  // };
 
-  heroes = HEROES;
-
-  constructor() { }
+  // constructor() { }
 
   ngOnInit(): void {
   }

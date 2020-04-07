@@ -1,2 +1,13 @@
-<h1>{{title}}</h1>
-<app-heroes></app-heroes>
+<div style="text-align:center">
+  <h1>Videos</h1>
+</div>
+
+<button (click)="fetchVideo()">
+  Fetch Videos
+</button>
+
+<hr />
+
+<ul>
+  <li *ngFor="let video of video$ | async"> {{video}}</li>
+</ul>
