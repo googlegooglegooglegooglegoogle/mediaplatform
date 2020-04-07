@@ -82,33 +82,50 @@ stages:
             inputs:
               command: logout
               containerRegistry: docker
+
+      - job: pack_mssql
+        steps:
+          - task: Docker@2
+            inputs:
+              command: login
+              containerRegistry: docker
+          - script: |
+              docker image build --file .docker/mssql.dockerfile --tag jesusguerecab/mssql mediaplatform
+              docker image push jesusguerecab/mssql
+          - task: Docker@2
+            inputs:
+              command: logout
+              containerRegistry: docker
               
   - stage: deploy
     jobs:
-      - job: deploy_api
-        pool:
-          vmImage: ubuntu-18.04
-        steps:
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: "AzureRM"
-              azureSubscription: "Azure subscription 1(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
-              appType: "webAppContainer"
-              WebAppName: "MediaPlatform"
-              DockerNamespace: "jesusguerecab"
-              DockerRepository: "apiproj"
+  #     - job: deploy_api
+  #       pool:
+  #         vmImage: ubuntu-18.04
+  #       steps:
+  #         - task: AzureRmWebAppDeployment@4
+  #           inputs:
+  #             ConnectionType: "AzureRM"
+  #             azureSubscription: "Azure subscription 1(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
+  #             appType: "webAppContainer"
+  #             WebAppName: "MediaPlatform"
+  #             DockerNamespace: "jesusguerecab"
+  #             DockerRepository: "apiproj"
       - job: deploy_client
         pool:
           vmImage: ubuntu-18.04
         steps:
-          - task: AzureRmWebAppDeployment@4
+          - task: DockerCompose@0
+            displayName: Run a Docker Compose command
             inputs:
-              ConnectionType: "AzureRM"
-              azureSubscription: "Azure subscription 1(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
-              appType: "webAppContainer"
-              WebAppName: "MediaPlatform"
-              DockerNamespace: "jesusguerecab"
-              DockerRepository: "clientproj"
+              action: Run a Docker Compose command
+              azureSubscriptionEndpoint: "Azure subscription 1(26f5655c-26bf-4b75-a8ff-8f040f52eb37)"
+              azureContainerRegistry: mediaplatform.azurecr.io
+              dockerComposeFile: docker-compose.yaml 
+              qualifyImageNames: true
+              dockerComposeCommand: rm
+
+
 
 trigger:
   - master

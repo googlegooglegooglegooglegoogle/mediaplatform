@@ -27,12 +27,16 @@ namespace MediaPlatformClient.MVC.Controllers
 
       public IActionResult Index() //Index should display videos, users who uploaded them, and community name?
       {
-         List<HomeViewModel> hvms = new List<HomeViewModel>() 
-         {
-          new HomeViewModel() { Title = "SWEET EATS", UploadedBy = "Guy Fieri", CommunityName = "Flavor Town" },
-          new HomeViewModel() { Title = "YESFRED", UploadedBy = "FredFredBurger", CommunityName = "Gumboooo" },
-         };
-         return View(hvms);
+         // List<HomeViewModel> hvms = new List<HomeViewModel>() 
+         // {
+         //  new HomeViewModel() { Title = "SWEET EATS", UploadedBy = "Guy Fieri", CommunityName = "Flavor Town" },
+         //  new HomeViewModel() { Title = "YESFRED", UploadedBy = "FredFredBurger", CommunityName = "Gumboooo" },
+         // };
+
+         var res = _mps.Client.GetAsync($"http://api/video/demi").GetAwaiter().GetResult();
+         var videos = JsonConvert.DeserializeObject<List<VideoViewModel>>(res.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+         
+         return View(videos);
       }
 
       public IActionResult Privacy()
