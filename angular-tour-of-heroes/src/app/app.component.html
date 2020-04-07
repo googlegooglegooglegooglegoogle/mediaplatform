@@ -1,13 +1,7 @@
-<div style="text-align:center">
-  <h1>Videos</h1>
+<h1>{{title}}</h1>
+
+<button (click)="getPosts()">Get Posts</button>
+
+<div *ngFor="let post of posts | async">
+  {{ post | json }}
 </div>
-
-<button (click)="fetchVideo()">
-  Fetch Videos
-</button>
-
-<hr />
-
-<ul>
-  <li *ngFor="let video of video$ | async"> {{video}}</li>
-</ul>

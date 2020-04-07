@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {VideoService} from './video.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,16 @@ import {VideoService} from './video.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  video$;
-  constructor(private videoService: VideoService){}
-  fetchVideo() {
-    this.video$ = this.videoService.fetchVideos();
+  
+  title: string = "FREEEEED";
+
+  readonly ROOT_URL = 'https://jsonplaceholder.typicode.com/posts'
+
+  posts: any;
+  
+  constructor(private http: HttpClient) {}
+  
+  getPosts() {
+    this.posts = this.http.get(this.ROOT_URL)
   }
 }
