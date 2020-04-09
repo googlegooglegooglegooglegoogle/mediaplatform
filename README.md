@@ -1,0 +1,1 @@
+SeenIt is an online video-sharing platform. Registered users can submit video content to the site, which can be discussed by other members. Videos are organized by user-created groups called "communities", which cover an array of topics like science, politics, comedy, food, and gaming.
